@@ -3,9 +3,9 @@ function showInfo(person) {
   const moreInfoSection = document.getElementById('more-info');
 
   if (person === 'rahi') {
-      infoText.textContent = "رەهێ تێکنیشنەکی پەروەردەی بواری کۆمپیووتر و چاکسازی.";
+      infoText.textContent = "تەمەنی ١٥ سالە وە لە شاری سۆران دەژێت هەروەها درووستکەری پرۆگرامی گووگلە.";
   } else if (person === 'matin') {
-      infoText.textContent = "ماتین بەرز بووە لە بواری چاکسازی ئەلیکترۆنی و کەلوپەلی.";
+      infoText.textContent = "تەمەنی ١٣ سالە وە خەلکی شاری سۆرانە هەروەها خاوەنی کۆمپانیای فیرارییە.";
   }
 
   moreInfoSection.classList.remove('hidden');
