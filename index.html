@@ -8,30 +8,43 @@
 </head>
 <body>
     <header>
-        <h1>خوێندکارانی راهی و مەتین</h1>
-        <p>ماڵپەڕی تایبەتی بەرزکردنەوەی تەنیشت</p>
+        <h1>خوێندکارانی رەهێ و ماتین</h1>
+        <p>بەشی تایبەتی هەڵبژاردن و هەواڵی نوێ</p>
     </header>
     <main>
+        <section class="intro">
+            <h2>نێوان نوێنەران</h2>
+            <p>ئەم ماڵپەڕە درووستکراوە بەرزکردنەوەی تواناکانی رەهێ و ماتین.</p>
+        </section>
+
         <section class="profiles">
             <div class="card">
                 <h2>راهی</h2>
-                <p>تەمەنی ١٥ سالە وە لە شاری سۆران دەژێت هەروەها درووستکەری پرۆگرامی گووگلە</p>
+                <p>پێشەوە بوونی زانیاری کۆمپیووتر و زانیاری نوێکار.</p>
                 <button onclick="showInfo('rahi')">زانیاری زیاتر</button>
             </div>
             <div class="card">
                 <h2>مەتین</h2>
-                <p>تەمەنی ١٣ سالە وە خەلکی شاری سۆرانە هەروەها خاوەنی کۆمپانیای فیرارییە</p>
+                <p>کارکردنی چاکسازی و پەرەپێدانی نوێ.</p>
                 <button onclick="showInfo('matin')">زانیاری زیاتر</button>
             </div>
         </section>
+
+        <section id="game-section">
+            <h2>یاری تایبەتی</h2>
+            <canvas id="gameCanvas" width="300" height="300"></canvas>
+            <p>ئەو توپەی قەڵەش بگرە.</p>
+        </section>
+
         <section id="more-info" class="hidden">
             <h2>زانیاری زیاتر</h2>
             <p id="info-text"></p>
             <button onclick="hideInfo()">گەڕانەوە</button>
         </section>
     </main>
+
     <footer>
-        <p>ئەم ماڵپەڕە درووستکراوە لەلایەن رەهێ و ماتین. © 2024</p>
+        <p>ئەم ماڵپەڕە درووستکراوە لەلایەن راهی و مەتین. © 2024</p>
     </footer>
     <script src="script.js"></script>
 </body>
