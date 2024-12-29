@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahi & Matin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>خوێندکارانی رەهێ و ماتین</h1>
+        <p>ماڵپەڕی تایبەتی بەرزکردنەوەی تەنیشت</p>
+    </header>
+    <main>
+        <section class="profiles">
+            <div class="card">
+                <h2>رەهێ</h2>
+                <p>تێکنیشنەکی زانا و بەسوود لە بواری کۆمپیووتر.</p>
+                <button onclick="showInfo('rahi')">زانیاری زیاتر</button>
+            </div>
+            <div class="card">
+                <h2>ماتین</h2>
+                <p>بە سوود لە بواری چاککردنەوە و ئاڵەتە ئەلیکترۆنییەکان.</p>
+                <button onclick="showInfo('matin')">زانیاری زیاتر</button>
+            </div>
+        </section>
+        <section id="more-info" class="hidden">
+            <h2>زانیاری زیاتر</h2>
+            <p id="info-text"></p>
+            <button onclick="hideInfo()">گەڕانەوە</button>
+        </section>
+    </main>
+    <footer>
+        <p>ئەم ماڵپەڕە درووستکراوە لەلایەن رەهێ و ماتین. © 2024</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
