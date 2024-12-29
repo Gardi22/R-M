@@ -1,4 +1,4 @@
-// Function to show the modal with dynamic content based on the person
+// Function to show the modal with dynamic content
 function showModal(person) {
   const modal = document.getElementById('modal');
   const modalTitle = document.getElementById('modal-title');
@@ -25,8 +25,5 @@ function hideModal() {
   modal.classList.remove('active'); // Hide the modal by removing the 'active' class
 }
 
-// Attach event listener to close button
-document.querySelector('.close').addEventListener('click', hideModal);
-
 // Prevent the modal from automatically showing when the page loads
-// The modal only appears when the showModal function is triggered by a button click or other action.
+// The modal only appears when the showModal function is triggered by a button click or other action
