@@ -1,57 +1,83 @@
-// Show more info
-function showInfo(person) {
-  const infoText = document.getElementById('info-text');
-  const moreInfoSection = document.getElementById('more-info');
+// Modal Logic
+function showModal(person) {
+  const modal = document.getElementById('modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDescription = document.getElementById('modal-description');
 
   if (person === 'rahi') {
-      infoText.textContent = "رەهێ: بەرز بووە لە زانیاری کۆمپیووتری و نوێکارە.";
+      modalTitle.textContent = "رەهێ";
+      modalDescription.textContent = "رەهێ داهێنەری زانستی کۆمپیوتری بەرزی تایبەتیە، بە شەڕنامەی ٢٠ یاری ڕوونەکی.";
   } else if (person === 'matin') {
-      infoText.textContent = "ماتین: پەروەردەی زانستی نوێ و چاکسازی بووە.";
+      modalTitle.textContent = "ماتین";
+      modalDescription.textContent = "ماتین توانایە لە بەکارهێنانی زانیاری نوێیە و ئەو بەشە یەکەمە بە چاکسازی تایبەتی.";
   }
 
-  moreInfoSection.classList.remove('hidden');
+  modal.classList.remove('hidden');
 }
 
-// Hide more info
-function hideInfo() {
-  const moreInfoSection = document.getElementById('more-info');
-  moreInfoSection.classList.add('hidden');
+function hideModal() {
+  const modal = document.getElementById('modal');
+  modal.classList.add('hidden');
 }
 
-// Game logic
+// Flappy Bird Game Logic
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-let ballX = Math.random() * 280 + 10;
-let ballY = Math.random() * 280 + 10;
-const ballRadius = 10;
+let birdY = 200;
+let birdVelocity = 0;
+const gravity = 0.5;
+const jump = -10;
+const birdRadius = 10;
 
-function drawBall() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+const pipeWidth = 40;
+const pipeGap = 100;
+let pipeX = canvas.width;
+let pipeHeight = Math.random() * (canvas.height - pipeGap);
+
+function drawBird() {
   ctx.beginPath();
-  ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
-  ctx.fillStyle = "#ff6f61";
+  ctx.arc(50, birdY, birdRadius, 0, Math.PI * 2);
+  ctx.fillStyle = '#e43f5a';
   ctx.fill();
   ctx.closePath();
 }
 
-function moveBall() {
-  ballX = Math.random() * 280 + 10;
-  ballY = Math.random() * 280 + 10;
-  drawBall();
+function drawPipe() {
+  ctx.fillStyle = '#1f4068';
+  ctx.fillRect(pipeX, 0, pipeWidth, pipeHeight);
+  ctx.fillRect(pipeX, pipeHeight + pipeGap, pipeWidth, canvas.height - pipeHeight - pipeGap);
 }
 
-canvas.addEventListener('click', (e) => {
-  const rect = canvas.getBoundingClientRect();
-  const clickX = e.clientX - rect.left;
-  const clickY = e.clientY - rect.top;
+function updateGame() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  const distance = Math.sqrt((clickX - ballX) ** 2 + (clickY - ballY) ** 2);
-  if (distance < ballRadius) {
-      alert("تۆ بردووە!");
-      moveBall();
+  birdVelocity += gravity;
+  birdY += birdVelocity;
+
+  pipeX -= 2;
+  if (pipeX + pipeWidth < 0) {
+      pipeX = canvas.width;
+      pipeHeight = Math.random() * (canvas.height - pipeGap);
   }
+
+  if (
+      (birdY - birdRadius < 0 || birdY + birdRadius > canvas.height) ||
+      (pipeX < 50 + birdRadius && pipeX + pipeWidth > 50 - birdRadius && (birdY - birdRadius < pipeHeight || birdY + birdRadius > pipeHeight + pipeGap))
+  ) {
+      alert("تۆ بردووە!");
+      birdY = 200;
+      birdVelocity = 0;
+      pipeX = canvas.width;
+  }
+
+  drawBird();
+  drawPipe();
+  requestAnimationFrame(updateGame);
+}
+
+canvas.addEventListener('click', () => {
+  birdVelocity = jump;
 });
 
-// Initial draw
-drawBall();
+updateGame();
